@@ -12,7 +12,7 @@ const Header = () => {
         <div className="flex-1">
           <Logo />
         </div>
-        <nav className="lg:flex md:gap-8 md:hidden">
+        <nav className="lg:flex lg:gap-8 hidden">
           <Link
             href="/shop/products"
             className="text-blue-500 uppercase font-semibold"

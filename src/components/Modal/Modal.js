@@ -17,7 +17,7 @@ function Modal({ children }) {
           + Create New Listing
         </DialogTrigger>
       </div>
-      <DialogContent className="bg-white rounded-lg p-6 max-w-md w-full mx-auto">
+      <DialogContent className="bg-white rounded-lg p-6 max-w-xl w-full mx-auto">
         <DialogHeader>
           <DialogTitle className="text-lg font-medium">
             Create a New Disc Listing
