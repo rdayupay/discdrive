@@ -1,13 +1,13 @@
-import Modal from '@/components/Modal';
+import ModalContainer from '@/components/ModalContainer';
 import NewListingForm from '@/components/NewListingForm';
 import React from 'react';
 
 async function ProductPage() {
   return (
     <div>
-      <Modal>
+      <ModalContainer>
         <NewListingForm />
-      </Modal>
+      </ModalContainer>
       <div>ProductPage</div>
     </div>
   );
