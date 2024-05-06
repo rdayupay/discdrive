@@ -33,7 +33,11 @@ const ImageUpload = ({ value, onChange, onRemove }) => {
         ))}
       </div>
 
-      <CldUploadWidget uploadPreset="lc5k3zph" onSuccess={onUpload}>
+      <CldUploadWidget
+        uploadPreset="lc5k3zph"
+        onSuccess={onUpload}
+        maxImageFileSize={5000000}
+      >
         {({ open }) => {
           return (
             <Button

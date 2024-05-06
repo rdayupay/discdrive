@@ -3,9 +3,13 @@ import Image from 'next/image';
 const DiscCard = ({ disc }) => {
   const { name, discType, weight, speed, color, price, image } = disc;
 
+  const capitalizeFirstLetter = (str) => {
+    return str.charAt(0).toUpperCase() + str.slice(1);
+  };
+
   return (
     <article className="flex flex-col bg-card rounded-md border lg:border-2 border-gray-400 overflow-hidden relative">
-      <div className="relative w-full h-0 pb-[75%]">
+      <div className="relative w-full h-0 pb-[100%]">
         <Image
           src={disc.image}
           alt="disc image"
@@ -18,9 +22,11 @@ const DiscCard = ({ disc }) => {
       </div>
       <div className="p-2 ">
         <h2 className="text-l text-center lg:text-l font-bold bg-slate-300 ">
-          {name}
+          {name.toUpperCase()}
         </h2>
-        <p className="text-gray-700 lg:text-m mb-2">{discType}</p>
+        <p className="text-gray-700 lg:text-m mb-2">
+          {capitalizeFirstLetter(discType)}
+        </p>
         <dl className="grid grid-cols-2 gap-1">
           <div className="lg:col-span-2">
             <dt className="text-sm text-gray-600">Price</dt>
@@ -39,7 +45,9 @@ const DiscCard = ({ disc }) => {
 
           <div className="lg:col-span-2">
             <dt className="text-xs text-gray-600">Color</dt>
-            <dd className="font-semibold text-sm text-gray-900">{color}</dd>
+            <dd className="font-semibold text-sm text-gray-900">
+              {capitalizeFirstLetter(color)}
+            </dd>
           </div>
         </dl>
       </div>

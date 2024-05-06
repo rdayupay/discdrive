@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import MyModal from '../DialogBox';
+import DialogBox from '../DialogBox';
 import { Plus } from 'react-feather';
 
 function ModalContainer({ children }) {
@@ -18,12 +18,12 @@ function ModalContainer({ children }) {
       >
         <Plus className="h-4 w-4 mr-1" /> Create New Disc
       </button>
-      <MyModal isOpen={isModalOpen} onClose={closeModal}>
+      <DialogBox isOpen={isModalOpen} onClose={closeModal}>
         <h2 className="text-lg font-semibold mb-4">
           Create a New Disc Listing
         </h2>
         {children}
-      </MyModal>
+      </DialogBox>
     </div>
   );
 }

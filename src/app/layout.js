@@ -17,7 +17,7 @@ export default function RootLayout({ children }) {
       <body className={inter.className}>
         <ToastProvider />
         <Header />
-        <div className="min-h-screen bg-gray-200 ">{children}</div>
+        <div className="min-h-screen bg-blue-200 ">{children}</div>
       </body>
     </html>
   );

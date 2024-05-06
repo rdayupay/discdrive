@@ -60,7 +60,6 @@ function NewListingForm() {
   };
 
   const onSubmit = async (values) => {
-    console.log(values);
     try {
       setLoading(true);
 
@@ -135,14 +134,14 @@ function NewListingForm() {
 
           <FormField
             control={form.control}
-            name="speed"
+            name="price"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Speed</FormLabel>
+                <FormLabel>Price</FormLabel>
                 <FormControl>
                   <Input
                     type="number"
-                    placeholder="Speed"
+                    placeholder="Price"
                     {...field}
                     onKeyDown={handleKeyPress}
                   />
@@ -172,14 +171,14 @@ function NewListingForm() {
 
           <FormField
             control={form.control}
-            name="price"
+            name="speed"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Price</FormLabel>
+                <FormLabel>Speed</FormLabel>
                 <FormControl>
                   <Input
                     type="number"
-                    placeholder="Price"
+                    placeholder="Speed"
                     {...field}
                     onKeyDown={handleKeyPress}
                   />
@@ -226,12 +225,11 @@ function NewListingForm() {
             )}
           />
 
-          <Button
-            type="submit"
-            className="flex-grow md:w-auto bg-blue-600 text-white"
-          >
-            Create
-          </Button>
+          <div className="col-span-3 flex justify-end">
+            <Button type="submit" className="bg-blue-600 text-white px-4 w-36">
+              Create
+            </Button>
+          </div>
         </form>
       </Form>
     </div>
