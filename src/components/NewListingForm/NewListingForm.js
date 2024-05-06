@@ -49,7 +49,7 @@ function NewListingForm() {
       price: 0.1,
       speed: 1,
       weight: 1,
-      image: '/temp',
+      image: '',
     },
   });
 

@@ -4,7 +4,7 @@ import Sort from '../Sort';
 
 function LeftSidebar() {
   return (
-    <div className="sticky top-0 p-10 flex flex-col gap-12 bg-blue-100 shadow-xl">
+    <div className="p-10 flex flex-col gap-12 bg-blue-100 shadow-xl">
       <Filter />
       <Sort />
     </div>

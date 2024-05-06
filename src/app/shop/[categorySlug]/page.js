@@ -1,16 +1,40 @@
 import ModalContainer from '@/components/ModalContainer';
 import NewListingForm from '@/components/NewListingForm';
-import React from 'react';
 
-async function ProductPage() {
+import DiscCard from '@/components/DiscCard';
+import ArticleWrapper from './ArticleWrapper';
+
+const getDiscs = async () => {
+  try {
+    const res = await fetch('http://localhost:3000/api/discs', {
+      method: 'GET',
+      cache: 'no-store',
+    });
+
+    return res.json();
+  } catch (err) {
+    console.error('[discs_GET]', err);
+  }
+};
+
+const ProductPage = async () => {
+  const { discs } = await getDiscs();
+
   return (
-    <div>
+    <>
       <ModalContainer>
         <NewListingForm />
       </ModalContainer>
-      <div>ProductPage</div>
-    </div>
+
+      <div className="p-5 ">
+        <ArticleWrapper>
+          {discs.map((disc) => (
+            <DiscCard key={disc._id} disc={disc} />
+          ))}
+        </ArticleWrapper>
+      </div>
+    </>
   );
-}
+};
 
 export default ProductPage;
