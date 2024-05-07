@@ -6,7 +6,7 @@ import ArticleWrapper from './ArticleWrapper';
 
 const getDiscs = async () => {
   try {
-    const res = await fetch('http://localhost:3000/api/discs', {
+    const res = await fetch(process.env.URL + '/api/discs', {
       method: 'GET',
       cache: 'no-store',
     });
@@ -17,8 +17,15 @@ const getDiscs = async () => {
   }
 };
 
-const ProductPage = async () => {
+const filterDiscsByType = (discs, categorySlug) =>
+  categorySlug !== 'products'
+    ? discs.filter((disc) => disc.discType === categorySlug)
+    : discs;
+
+const ProductPage = async ({ params }) => {
   const { discs } = await getDiscs();
+
+  const filteredDiscs = filterDiscsByType(discs, params.categorySlug);
 
   return (
     <>
@@ -28,7 +35,7 @@ const ProductPage = async () => {
 
       <div className="p-5 ">
         <ArticleWrapper>
-          {discs.map((disc) => (
+          {filteredDiscs.map((disc) => (
             <DiscCard key={disc._id} disc={disc} />
           ))}
         </ArticleWrapper>
