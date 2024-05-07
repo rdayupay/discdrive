@@ -2,7 +2,7 @@ import ModalContainer from '@/components/ModalContainer';
 import NewListingForm from '@/components/NewListingForm';
 
 import DiscCard from '@/components/DiscCard';
-import ArticleWrapper from './ArticleWrapper';
+import GridWrapper from '@/components/GridWrapper';
 
 const getDiscs = async () => {
   try {
@@ -34,11 +34,11 @@ const ProductPage = async ({ params }) => {
       </ModalContainer>
 
       <div className="p-5 ">
-        <ArticleWrapper>
+        <GridWrapper>
           {filteredDiscs.map((disc) => (
             <DiscCard key={disc._id} disc={disc} />
           ))}
-        </ArticleWrapper>
+        </GridWrapper>
       </div>
     </>
   );
