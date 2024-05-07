@@ -3,10 +3,11 @@ import NewListingForm from '@/components/NewListingForm';
 
 import DiscCard from '@/components/DiscCard';
 import GridWrapper from '@/components/GridWrapper';
+import { WEBAPP_URL } from '@/lib/utils/WEBAPP_URL';
 
 const getDiscs = async () => {
   try {
-    const res = await fetch(process.env.URL + '/api/discs', {
+    const res = await fetch(WEBAPP_URL + '/api/discs', {
       method: 'GET',
       cache: 'no-store',
     });
