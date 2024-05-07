@@ -1,6 +1,6 @@
 # DiscDrive
 
-DiscDrive is an ecommerce web page for purchasing disc golf discs, built using Next.js v14 and Tailwind CSS.
+DiscDrive is an ecommerce web page for purchasing golf discs, built using Next.js v14 and Tailwind CSS.
 
 # 👍 Features Implemented
 
@@ -64,7 +64,7 @@ Initially used Shadcnui dialog component for accessibility features, but encount
 
 ### 1. Styles Reorganization
 
-### 2. Modal Accessibility and Responsiveness
+### 2. Modal Accessibility
 
 ### 3. Error Handling
 
@@ -79,7 +79,7 @@ To run the project locally, follow these steps:
 1. Clone the repository:
 
 ```bash
-git clone <repository-url>
+git clone https://github.com/rdayupay/discdrive.git
 ```
 
 2. Navigate into the project directory
