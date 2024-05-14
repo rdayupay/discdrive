@@ -13,9 +13,10 @@ const DiscCard = ({ disc }) => {
         <Image
           src={disc.image}
           alt="disc image"
+          width={500}
+          height={500}
+          priority={true}
           className="absolute inset-0 object-cover w-full h-full"
-          layout="fill"
-          objectFit="cover"
         />
 
         <div className="absolute top-0 left-0 right-0 bottom-0 bg-black bg-opacity-10"></div>
