@@ -11,7 +11,7 @@ function ModalContainer({ children }) {
   const closeModal = () => setIsModalOpen(false);
 
   return (
-    <div className="flex items-center justify-center mt-8 lg:mr-52">
+    <div className="flex items-center justify-center mt-8 lg:mr-36">
       <button
         onClick={openModal}
         className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-6 rounded flex items-center"
