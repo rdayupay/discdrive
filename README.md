@@ -1,6 +1,6 @@
 # DiscDrive
 
-DiscDrive is an ecommerce web page for purchasing golf discs, built using Next.js v14 and Tailwind CSS.
+DiscDrive is an e-commerce platform specializing in the sale of golf discs, with a primary focus on facilitating the creation of new disc listings. Utilizing Next.js v14 and Tailwind CSS, DiscDrive enables users to effortlessly add new discs to their inventory.
 
 # 👍 Features Implemented
 
@@ -99,3 +99,35 @@ npm install
 ```bash
 npm run dev
 ```
+
+## Account Setup Instructions
+
+Before running the DiscDrive project locally, you need to set up accounts for MongoDB and Cloudinary. Follow the steps below to create accounts and add the necessary credentials to your .env file.
+
+### 1. MongoDB Account Setup
+
+1. Go to the MongoDB website: https://www.mongodb.com/
+2. Sign up for an account or log in if you already have one.
+3. Create a new project for your DiscDrive application.
+4. Navigate to the project dashboard and create a new MongoDB cluster.
+5. Once the cluster is created, click on "Connect" and then select "Connect your application".
+6. Copy the connection string provided.
+
+### 2. Cloudinary Account Setup
+
+1. Go to the Cloudinary website: https://cloudinary.com/
+2. Sign up for an account or log in if you already have one.
+3. After logging in, navigate to the dashboard and find your cloud name.
+4. Make sure to enable unsigned uploads in the settings.
+
+### 3. Add Credentials to .env File
+
+In your DiscDrive project directory, create a .env file if you don't already have one. Add the following lines to the .env file and replace the placeholders with your actual MongoDB connection string and Cloudinary cloud name.
+
+```env
+NEXT_PUBLIC_MONGODB_URL=<your_mongodb_connection_string>
+
+NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME=<your_cloudinary_cloud_name>
+```
+
+Once you've added the credentials to your .env file, you're ready to run the DiscDrive project locally. Follow the installation instructions provided earlier to set up and run the project.
