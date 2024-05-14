@@ -3,35 +3,18 @@ import NewListingForm from '@/components/NewListingForm';
 import LeftSidebar from '@/components/LeftSidebar';
 import DiscCard from '@/components/DiscCard';
 import GridWrapper from '@/components/GridWrapper';
-import { WEBAPP_URL } from '@/lib/utils/WEBAPP_URL';
-
-const getDiscs = async () => {
-  try {
-    const res = await fetch(`${WEBAPP_URL}/api/discs`, {
-      method: 'GET',
-      cache: 'no-store',
-    });
-
-    return res.json();
-  } catch (err) {
-    console.error('[discs_GET]', err);
-  }
-};
-
-const filterDiscsByType = (discs, categorySlug) =>
-  categorySlug !== 'products'
-    ? discs.filter((disc) => disc.discType === categorySlug)
-    : discs;
+import { getDiscs } from '@/helpers/data';
 
 const ProductPage = async ({ params }) => {
-  const { discs } = await getDiscs();
+  const { categorySlug } = params;
+  const selectedFilter = categorySlug === 'products' ? '' : categorySlug;
 
-  const filteredDiscs = filterDiscsByType(discs, params.categorySlug);
+  const discs = await getDiscs(categorySlug);
 
   return (
     <div className="flex flex-col lg:flex-row">
       <div className="w-full lg:w-48 bg-gray-100">
-        <LeftSidebar selectedFilter={params.categorySlug} discs={discs} />
+        <LeftSidebar selectedFilter={selectedFilter} discs={discs} />
       </div>
 
       <div className="w-full ">
@@ -41,7 +24,7 @@ const ProductPage = async ({ params }) => {
 
         <div className="p-5 ">
           <GridWrapper>
-            {filteredDiscs.map((disc) => (
+            {discs.map((disc) => (
               <DiscCard key={disc._id} disc={disc} />
             ))}
           </GridWrapper>

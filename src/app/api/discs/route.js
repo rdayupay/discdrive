@@ -43,7 +43,7 @@ export async function GET() {
 
     const discs = await Disc.find();
 
-    return NextResponse.json({ discs }, { status: 200 });
+    return NextResponse.json(discs, { status: 200 });
   } catch (err) {
     console.error('[disc_GET]', err);
 
