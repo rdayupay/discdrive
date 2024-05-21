@@ -1,4 +1,7 @@
+'use client';
+
 import React from 'react';
+import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 
 import { ATTRIBUTES } from '@/lib/constants';
@@ -8,9 +11,15 @@ const capitalizeFirstLetter = (string) => {
 };
 
 function LeftSidebar({ selectedFilter, discs }) {
+  const router = useRouter();
   const colors = [...new Set(discs.map((disc) => disc.color))].map((color) =>
     capitalizeFirstLetter(color)
   );
+
+  const handleColorChange = (event) => {
+    const color = event.target.value.toLowerCase();
+    router.push(`/shop/products?color=${color}`);
+  };
 
   return (
     <aside className="p-3 sm:p-4 lg:p-6">
@@ -44,10 +53,13 @@ function LeftSidebar({ selectedFilter, discs }) {
           <h2 className="text-sm font-semibold text-gray-800 mb-4 mt-4">
             Colors
           </h2>
-          <select className="block w-full py-2 px-4 rounded-md text-left focus:outline-none focus:ring-0 focus:border-transparent bg-white border-gray-300">
+          <select
+            onChange={handleColorChange}
+            className="block w-full py-2 px-4 rounded-md text-left focus:outline-none focus:ring-0 focus:border-transparent bg-white border-gray-300"
+          >
             <option value="">All Colors</option>
             {colors.map((color) => (
-              <option key={color} value={color}>
+              <option key={color} value={color.toLowerCase()}>
                 {color}
               </option>
             ))}
