@@ -39,9 +39,23 @@ export async function GET(req) {
 
     const { searchParams } = new URL(req.url);
     const color = searchParams.get('color');
+    const sortAttribute = searchParams.get('sort');
     const filter = color ? { color: color.toLowerCase() } : {};
 
-    const discs = await Disc.find(filter);
+    let discs = await Disc.find(filter);
+
+    if (sortAttribute) {
+      discs = discs.sort((a, b) => {
+        if (
+          sortAttribute === 'price' ||
+          sortAttribute === 'speed' ||
+          sortAttribute === 'weight'
+        ) {
+          return a[sortAttribute] - b[sortAttribute];
+        }
+        return 0;
+      });
+    }
 
     return NextResponse.json(discs, { status: 200 });
   } catch (err) {

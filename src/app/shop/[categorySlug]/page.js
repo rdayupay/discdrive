@@ -1,5 +1,4 @@
 import React from 'react';
-
 import { getDiscs } from '@/helpers/data';
 import LeftSidebar from '@/components/LeftSidebar';
 import ModalContainer from '@/components/ModalContainer';
@@ -18,7 +17,11 @@ const ProductPage = async ({ params, searchParams }) => {
   return (
     <div className="flex flex-col lg:flex-row">
       <div className="w-full lg:w-48 bg-gray-100">
-        <LeftSidebar selectedFilter={selectedFilter} discs={discs} />
+        <LeftSidebar
+          selectedFilter={selectedFilter}
+          discs={discs}
+          categorySlug={categorySlug}
+        />
       </div>
 
       <div className="w-full">

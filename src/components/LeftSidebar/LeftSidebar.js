@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { useRouter } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 
 import { ATTRIBUTES, SORT_OPTIONS } from '@/lib/constants';
@@ -10,25 +10,31 @@ const capitalizeFirstLetter = (string) => {
   return string.charAt(0).toUpperCase() + string.slice(1);
 };
 
-function LeftSidebar({ selectedFilter, discs }) {
+function LeftSidebar({ selectedFilter, discs, categorySlug }) {
   const router = useRouter();
+  const searchParams = useSearchParams();
   const colors = [...new Set(discs.map((disc) => disc.color))].map((color) =>
     capitalizeFirstLetter(color)
   );
 
   const handleColorChange = (event) => {
     const color = event.target.value.toLowerCase();
-    router.push(`/shop/products?color=${color}`);
+    const newSearchParams = new URLSearchParams(searchParams.toString());
+    newSearchParams.set('color', color);
+    newSearchParams.delete('sort');
+    router.push(`/shop/${categorySlug}?${newSearchParams.toString()}`);
   };
 
   const handleSortChange = (event) => {
     const sort = event.target.value;
-    router.push(`/shop/products?sort=${sort}`);
+    const newSearchParams = new URLSearchParams(searchParams.toString());
+    newSearchParams.set('sort', sort);
+    router.push(`/shop/${categorySlug}?${newSearchParams.toString()}`);
   };
 
   return (
     <aside className="p-3 sm:p-4 lg:p-6">
-      <div className="grid lg:grid-cols-1 grid-cols-3">
+      <div className="grid lg:grid-cols-1 grid-cols-3 gap-4">
         <nav>
           <Link href={`/shop/products`}>
             <h2 className="text-sm font-semibold text-gray-800 mb-2">

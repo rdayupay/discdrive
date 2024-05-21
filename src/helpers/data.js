@@ -11,6 +11,10 @@ export async function getDiscs(
       queryParams.append('color', colorFilter);
     }
 
+    if (sortAttribute) {
+      queryParams.append('sort', sortAttribute);
+    }
+
     const res = await fetch(
       `${WEBAPP_URL}/api/discs?${queryParams.toString()}`,
       {
