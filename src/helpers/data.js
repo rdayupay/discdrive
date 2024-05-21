@@ -1,6 +1,10 @@
 import { WEBAPP_URL } from '@/lib/utils/WEBAPP_URL';
 
-export async function getDiscs(categorySlug, colorFilter = '') {
+export async function getDiscs(
+  categorySlug,
+  colorFilter = '',
+  sortAttribute = ''
+) {
   try {
     const queryParams = new URLSearchParams();
     if (colorFilter) {
@@ -19,12 +23,25 @@ export async function getDiscs(categorySlug, colorFilter = '') {
       throw new Error('Failed to fetch discs');
     }
 
-    const discs = await res.json();
+    let discs = await res.json();
 
     const filteredDiscs =
       categorySlug !== 'products'
         ? discs.filter((disc) => disc.discType === categorySlug)
         : discs;
+
+    if (sortAttribute) {
+      filteredDiscs.sort((a, b) => {
+        if (
+          sortAttribute === 'price' ||
+          sortAttribute === 'speed' ||
+          sortAttribute === 'weight'
+        ) {
+          return a[sortAttribute] - b[sortAttribute];
+        }
+        return 0;
+      });
+    }
 
     return filteredDiscs;
   } catch (err) {

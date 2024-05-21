@@ -4,7 +4,7 @@ import React from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 
-import { ATTRIBUTES } from '@/lib/constants';
+import { ATTRIBUTES, SORT_OPTIONS } from '@/lib/constants';
 
 const capitalizeFirstLetter = (string) => {
   return string.charAt(0).toUpperCase() + string.slice(1);
@@ -19,6 +19,11 @@ function LeftSidebar({ selectedFilter, discs }) {
   const handleColorChange = (event) => {
     const color = event.target.value.toLowerCase();
     router.push(`/shop/products?color=${color}`);
+  };
+
+  const handleSortChange = (event) => {
+    const sort = event.target.value;
+    router.push(`/shop/products?sort=${sort}`);
   };
 
   return (
@@ -61,6 +66,23 @@ function LeftSidebar({ selectedFilter, discs }) {
             {colors.map((color) => (
               <option key={color} value={color.toLowerCase()}>
                 {color}
+              </option>
+            ))}
+          </select>
+        </nav>
+
+        <nav>
+          <h2 className="text-sm font-semibold text-gray-800 mb-4 mt-4">
+            Sort by
+          </h2>
+          <select
+            onChange={handleSortChange}
+            className="block w-full py-2 px-4 rounded-md text-left focus:outline-none focus:ring-0 focus:border-transparent bg-white border-gray-300"
+          >
+            <option value="">None</option>
+            {SORT_OPTIONS.map(({ slug, label }) => (
+              <option key={slug} value={slug}>
+                {label}
               </option>
             ))}
           </select>

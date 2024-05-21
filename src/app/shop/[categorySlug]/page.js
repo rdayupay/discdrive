@@ -10,9 +10,10 @@ import DiscCard from '@/components/DiscCard';
 const ProductPage = async ({ params, searchParams }) => {
   const { categorySlug } = params;
   const colorFilter = searchParams ? searchParams.color : '';
+  const sortAttribute = searchParams ? searchParams.sort : '';
   const selectedFilter = categorySlug === 'products' ? '' : categorySlug;
 
-  const discs = await getDiscs(categorySlug, colorFilter);
+  const discs = await getDiscs(categorySlug, colorFilter, sortAttribute);
 
   return (
     <div className="flex flex-col lg:flex-row">
