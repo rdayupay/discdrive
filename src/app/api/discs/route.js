@@ -4,10 +4,7 @@ import Disc from '@/lib/models/Discs';
 
 export async function POST(req) {
   try {
-    // Temporarily removed user validation
-
     await connectToDB();
-
     const { name, discType, speed, color, weight, price, image } =
       await req.json();
 
@@ -49,7 +46,6 @@ export async function GET(req) {
     return NextResponse.json(discs, { status: 200 });
   } catch (err) {
     console.error('[disc_GET]', err);
-
     return new NextResponse('Internal Server Error', { status: 500 });
   }
 }
