@@ -1,14 +1,10 @@
 import { NextResponse } from 'next/server';
-
 import { connectToDB } from '@/lib/mongoDB';
 import Disc from '@/lib/models/Discs';
 
 export async function POST(req) {
   try {
-    // Temporarily removed user validation
-
     await connectToDB();
-
     const { name, discType, speed, color, weight, price, image } =
       await req.json();
 
@@ -19,10 +15,10 @@ export async function POST(req) {
     }
 
     const newDisc = await Disc.create({
-      name,
-      discType,
+      name: name.toLowerCase(),
+      discType: discType.toLowerCase(),
       speed,
-      color,
+      color: color.toLowerCase(),
       weight,
       price,
       image,
@@ -37,16 +33,33 @@ export async function POST(req) {
   }
 }
 
-export async function GET() {
+export async function GET(req) {
   try {
     await connectToDB();
 
-    const discs = await Disc.find();
+    const { searchParams } = new URL(req.url);
+    const color = searchParams.get('color');
+    const sortAttribute = searchParams.get('sort');
+    const filter = color ? { color: color.toLowerCase() } : {};
+
+    let discs = await Disc.find(filter);
+
+    if (sortAttribute) {
+      discs = discs.sort((a, b) => {
+        if (
+          sortAttribute === 'price' ||
+          sortAttribute === 'speed' ||
+          sortAttribute === 'weight'
+        ) {
+          return a[sortAttribute] - b[sortAttribute];
+        }
+        return 0;
+      });
+    }
 
     return NextResponse.json(discs, { status: 200 });
   } catch (err) {
     console.error('[disc_GET]', err);
-
     return new NextResponse('Internal Server Error', { status: 500 });
   }
 }
