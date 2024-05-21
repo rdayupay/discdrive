@@ -38,17 +38,32 @@ Enables users to submit the form and create new disc listings, which are saved t
 
 ![Create new disc](image-4.png)
 
-## 7. Responsive Design
+## 7. Sorting and Filtering
+
+### Sorting
+
+Allows users to sort the list of discs based on different attributes such as price, speed, and weight. This enables users to easily find discs according to their preferences.
+
+- Price
+- Speed
+- Weight
+
+![sort](image-7.png)
+
+### Filtering
+
+Provides filtering options to narrow down the list of discs based on specific attributes.
+
+- Color: Filter discs by their color.
+- Disc Type: Filter discs by their type, such as putter, mid-range, or driver.
+
+![filter](image-6.png)
+
+## 8. Responsive Design
 
 Ensures that the marketplace product grid is responsive to the width of the user's screen, providing a seamless experience across different devices.
 
 ![Medium window](image-5.png)
-
-## 🚶 In Progress (Sidebar)
-
-### 1. **Sorting**
-
-### 2. **Filtering**
 
 ## 💣💣 Issues Encountered
 
