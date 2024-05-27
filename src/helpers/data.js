@@ -10,7 +10,6 @@ export async function getDiscs(
     if (colorFilter) {
       queryParams.append('color', colorFilter);
     }
-
     if (sortAttribute) {
       queryParams.append('sort', sortAttribute);
     }
@@ -29,25 +28,11 @@ export async function getDiscs(
 
     let discs = await res.json();
 
-    const filteredDiscs =
-      categorySlug !== 'products'
-        ? discs.filter((disc) => disc.discType === categorySlug)
-        : discs;
-
-    if (sortAttribute) {
-      filteredDiscs.sort((a, b) => {
-        if (
-          sortAttribute === 'price' ||
-          sortAttribute === 'speed' ||
-          sortAttribute === 'weight'
-        ) {
-          return a[sortAttribute] - b[sortAttribute];
-        }
-        return 0;
-      });
+    if (categorySlug !== 'products') {
+      discs = discs.filter((disc) => disc.discType === categorySlug);
     }
 
-    return filteredDiscs;
+    return discs;
   } catch (err) {
     console.error('[discs_GET]', err);
     return [];
