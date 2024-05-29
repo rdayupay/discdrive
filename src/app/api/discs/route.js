@@ -40,17 +40,14 @@ export async function GET(req) {
     const { searchParams } = new URL(req.url);
     const color = searchParams.get('color');
     const sortAttribute = searchParams.get('sort');
+
     const filter = color ? { color: color.toLowerCase() } : {};
 
     let discs = await Disc.find(filter);
 
     if (sortAttribute) {
       discs = discs.sort((a, b) => {
-        if (
-          sortAttribute === 'price' ||
-          sortAttribute === 'speed' ||
-          sortAttribute === 'weight'
-        ) {
+        if (['price', 'speed', 'weight'].includes(sortAttribute)) {
           return a[sortAttribute] - b[sortAttribute];
         }
         return 0;
