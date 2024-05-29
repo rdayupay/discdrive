@@ -11,7 +11,7 @@ const DiscCard = ({ disc }) => {
     <article className="flex flex-col bg-card rounded-md border lg:border-2 border-gray-400 overflow-hidden relative">
       <div className="relative w-full h-0 pb-[100%]">
         <Image
-          src={disc.image}
+          src={image}
           alt="disc image"
           width={500}
           height={500}

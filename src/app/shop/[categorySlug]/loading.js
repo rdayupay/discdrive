@@ -1,11 +1,16 @@
-import Spinner from '@/components/Spinner';
 import React from 'react';
+
+import { range } from '@/lib/utils/utils';
+import DiscCardSkeleton from '@/components/DiscCardSkeleton';
+import GridWrapper from '@/components/GridWrapper';
 
 function DiscsLoading() {
   return (
-    <div>
-      <Spinner />
-    </div>
+    <GridWrapper>
+      {range(4).map((num) => (
+        <DiscCardSkeleton key={num} />
+      ))}
+    </GridWrapper>
   );
 }
 
